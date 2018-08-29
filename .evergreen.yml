@@ -302,11 +302,12 @@ tasks:
             ls -alh
 
             rm -f npm npx npm.cmd npx.cmd
-            mv node_modules/npm node_modules/npm2
-            node node_modules/npm2/bin/npm-cli.js i -g npm@5.7.1
-            rm -rf node_modules/npm2/
+            mv lib/node_modules/npm lib/node_modules/npm2
 
-            chmod +x npm.cmd || true
+            chmod +x ./node
+            ./node lib/node_modules/npm2/bin/npm-cli.js i -g npm@5.7.1
+            rm -rf lib/node_modules/npm2/
+
             npm i -g node-gyp
             npm version
 
@@ -357,7 +358,7 @@ tasks:
             chmod +x npm.cmd
             chmod +x npm
 
-            npm version
+            ./npm.cmd version
         variants:
           - windows-compass
           - windows-compass-community
