@@ -334,12 +334,15 @@ tasks:
 
             # Get precompiled
             curl -fs \
-              -o ".deps/${fetch_npm_tarball}" \
-              --url "https://nodejs.org/download/release/v8.9.3/${fetch_npm_tarball}"
+              -o ".deps/node-v8.9.3-win-x64.zip" \
+              --url "https://nodejs.org/download/release/v8.9.3/node-v8.9.3-win-x64.zip"
             cd .deps
-            unzip ${fetch_npm_tarball}
+            unzip node-v8.9.3-win-x64.zip
             mv node-v8.9.3-win-x64/* .
             rm -rf node-v8.9.3-win-x64
+
+            export PATH="${node_path}:$PATH"
+            export APPDATA=${add_env_appdata}
 
             ls -alh
 
@@ -347,14 +350,13 @@ tasks:
             mv node_modules/npm node_modules/npm2
             ls -alh
 
+            chmod +x ./node.exe
+
             ./node.exe node_modules/npm2/bin/npm-cli.js i -g npm@5.7.1
             rm -rf node_modules/npm2/
+            chmod +x npm.cmd
+            chmod +x npm
 
-            chmod +x npm.cmd || true
-            chmod +x npm || true
-            chmod +x node.exe || true
-
-            export APPDATA=${add_env_appdata}
             npm version
         variants:
           - windows-compass
