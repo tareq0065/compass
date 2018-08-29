@@ -308,9 +308,6 @@ tasks:
             ./bin/node lib/node_modules/npm2/bin/npm-cli.js i -g npm@5.7.1
             rm -rf lib/node_modules/npm2/
 
-            npm i -g node-gyp
-            npm version
-
         variants:
           - macos-compass
           - macos-compass-community
