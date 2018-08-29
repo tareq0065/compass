@@ -94,6 +94,8 @@ functions:
 
         # Run static analysis on code and project configuration
         npm run check;
+        # Run tests
+        npm test;
 
         # Create a release build
         npm run release ${compass_distribution};
