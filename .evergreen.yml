@@ -236,6 +236,8 @@ functions:
           #! /usr/bin/env bash
           cd $(pwd)
 
+          export PATH="/cygdrive/c/wixtools/bin:$PATH";
+
           # Load environment variables
           source ~/compass_env.sh
 
